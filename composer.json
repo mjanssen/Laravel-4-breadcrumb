@@ -1,0 +1,21 @@
+{
+    "name": "mj/breadcrumb",
+    "description": "A simple breadcrumb generator for Laravel 4",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marnix Janssen",
+            "email": "dev.marnix@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x"
+    },
+    "autoload": {
+        "psr-0": {
+            "Mj\\Breadcrumb": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
