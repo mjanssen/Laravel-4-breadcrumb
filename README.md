@@ -3,18 +3,27 @@ l4breadcrumb
 
 A small and easy customizable breadcrumb generator for Laravel 4.
 
-Setup:
+edit the .json
+============
 
-1. Register the class in the Providers array in 'app/config/app.php'.
+Edit your .json file and add the following line to your "require"
 
-For me it was:
-``'Mj\Breadcrumb\BreadcrumbServiceProvider'``
+``"mj/breadcrumb": "dev-master"``
+
+After this run the `composer update` to update your framework and get the breadcrumb class loaded into your files.
+
+Setup
+============
+
+Open app.php in your config folder
+
+1. Add the line `'Mj\Breadcrumb\BreadcrumbServiceProvider'` to the providers array.
 
 2. To make use of the Facade that comes with Laravel 4, make sure you register the alias in the file 'app/config/app.php'.
 
-Like:
-``'Breadcrumb'      => 'Mj\Breadcrumb\Facades\breadcrumb'``
+Like this: `'Breadcrumb'      => 'Mj\Breadcrumb\Facades\breadcrumb'`
 
+Usage
 ============
 
 To create breadcrumbs use the following code:
