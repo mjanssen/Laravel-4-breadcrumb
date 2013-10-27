@@ -1,4 +1,4 @@
-l4breadcrumb
+Laravel 4 Breadcrumbs
 ============
 
 A small and easy customizable breadcrumb generator for Laravel 4.
