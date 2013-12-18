@@ -39,3 +39,29 @@ To set an seperator you can use:
 At last send your breadcrumbs to your template (or just generate them) with the following command:
 
 ``Breadcrumb::generate()``
+
+Example
+============
+```
+//Controller
+
+public function page()
+{
+  //Those are required to set some breadcrumbs first.
+  Breadcrumb::addBreadcrumb('home', '/');
+  Breadcrumb::addBreadcrumb('some page', '/some-page');
+
+	Breadcrumb::setSeperator('/'); //Set some seperator you think is nicest (not required)
+
+  $data = array(
+	  'breadcrumbs' => Breadcrumb::generate() //Breadcrumbs UL is generated and stored in an array.
+  )
+
+  //return the view with the $data array to use it in the view
+  return View::make('some/page', $data);
+}
+
+//View
+
+{{$breadcrumbs}} // -> UL with list-items with the links :)
+```
