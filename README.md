@@ -42,6 +42,9 @@ At last send your breadcrumbs to your template (or just generate them) with the 
 
 Example
 ============
+
+Note: Use real url's (like /this/page) and not Laravel's URL helper. Not setting a URL at all will also work.
+
 ```
 //Controller
 
@@ -50,6 +53,7 @@ public function page()
   //Those are required to set some breadcrumbs first.
   Breadcrumb::addBreadcrumb('home', '/');
   Breadcrumb::addBreadcrumb('some page', '/some-page');
+  Breadcrumb::addBreadcrumb('last piece'); //Does not need a url because it's the last breadcrumb segment
 
 	Breadcrumb::setSeperator('/'); //Set some seperator you think is nicest (not required)
 
