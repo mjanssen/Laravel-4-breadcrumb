@@ -2,6 +2,7 @@
 namespace Mj\Breadcrumb;
 
 use Illuminate\Support\ServiceProvider;
+use Config;
 
 class BreadcrumbServiceProvider extends ServiceProvider
 {

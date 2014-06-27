@@ -2,6 +2,9 @@
 
 namespace Mj\Breadcrumb;
 
+use Illuminate\Config\Repository;
+use Config;
+
 class Breadcrumb
 {
     /*
@@ -9,15 +12,37 @@ class Breadcrumb
     | style-classes.
     */
 
+    /**
+     * Illuminate config repository.
+     *
+     * @var Illuminate\Config\Repository
+     */
+    protected $config;
+
+    private $seperator;
     private $breadcrumb = array();
-    private $seperator  = '<span class="divider">/</span>';
+
+    /**
+     * Create a new profiler instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->config = Config::get('Breadcrumb::config');
+
+        $this->seperator = ($this->config['enable_seperator'] === true)
+                            ? '<span class="divider">'.$this->config['default_seperator'].'</span>'
+                            : '';
+    }
 
     public function generate($ucfirst = true)
     {
         $output = '';
-        $count = 1;
+        $count  = 1;
+
         $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
-        $output .= '<ul class="breadcrumb" itemprop="breadcrumb">';
+        $output .= '<ol class="breadcrumb" itemprop="breadcrumb">';
         foreach ($this->breadcrumbs as $key => $value) {
             
             if ($count != count($this->breadcrumbs)) {
@@ -32,9 +57,9 @@ class Breadcrumb
 
             $count++;
         }
-        $output .= '</ul>';
+        $output .= '</ol>';
         $output .= '</div>';
-        $output .= '<div class=\"clearfix\"></div>';
+        $output .= '<div class="clearfix"></div>';
 
         return $output;
     }
