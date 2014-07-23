@@ -19,7 +19,7 @@ class Breadcrumb
      */
     protected $config;
 
-    private $seperator;
+    private $separator;
     private $breadcrumb = array();
 
     /**
@@ -31,8 +31,8 @@ class Breadcrumb
     {
         $this->config = Config::get('Breadcrumb::config');
 
-        $this->seperator = ($this->config['enable_seperator'] === true)
-                            ? '<span class="divider">'.$this->config['default_seperator'].'</span>'
+        $this->separator = ($this->config['enable_separator'] === true)
+                            ? '<span class="divider">'.$this->config['default_separator'].'</span>'
                             : '';
     }
 
@@ -52,7 +52,7 @@ class Breadcrumb
             }
 
             if ($count != count($this->breadcrumbs)) {
-                $output .= ' ' . $this->seperator . '</li>';
+                $output .= ' ' . $this->separator . '</li>';
             }
 
             $count++;
@@ -71,9 +71,9 @@ class Breadcrumb
         return $this;
     }
 
-    public function setSeperator($seperator)
+    public function setseparator($separator)
     {
-        $this->seperator = $seperator;
+        $this->separator = $separator;
 
         return $this;
     }
