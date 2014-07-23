@@ -1,6 +1,8 @@
 Laravel 4 Breadcrumbs
 ============
 
+** If you have problems running setSeperator (typo'd) after update, I changed the function name to setSeperator.
+
 A small and easy customizable breadcrumb generator for Laravel 4.
 
 edit the .json
@@ -34,7 +36,7 @@ You can add multiple breadcrumbs by repeating the code above.
 
 To set an seperator you can use:
 
-``Breadcrumb::setSeperator('yourseperator')``
+``Breadcrumb::setSeparator('yourseperator')``
 
 At last send your breadcrumbs to your template (or just generate them) with the following command:
 
@@ -55,7 +57,7 @@ public function page()
   Breadcrumb::addBreadcrumb('some page', '/some-page');
   Breadcrumb::addBreadcrumb('last piece'); //Does not need a url because it's the last breadcrumb segment
 
-	Breadcrumb::setSeperator('/'); //Set some seperator you think is nicest (not required)
+	Breadcrumb::setSeparator('/'); //Set some seperator you think is nicest (not required)
 
   $data = array(
 	  'breadcrumbs' => Breadcrumb::generate() //Breadcrumbs UL is generated and stored in an array.
