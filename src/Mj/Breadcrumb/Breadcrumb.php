@@ -45,16 +45,16 @@ class Breadcrumb
 
         $output .= '<div itemscope itemtype="http://schema.org/WebPage">';
         $output .= '<ol class="breadcrumb" itemprop="breadcrumb">';
-        foreach ($this->breadcrumbs as $key => $value) {
+        foreach ($this->breadcrumbs as $breadcrumb) {
 
-            $title = $ucfirst===true ? ucfirst($key) : $key;
+            $title = $ucfirst===true ? ucfirst($breadcrumb['title']) : $breadcrumb['title'];
             
             if ($count === $totalBreadcrumbs) {
                 $output .= '<li class="active">' . $title . '</li>';
-            } elseif (empty($value)) {
+            } elseif (empty($breadcrumb['uri'])) {
                 $output .= '<li>' . $title . '</li>';
             } else {
-                $output .= '<li><a href="' . $value . '">' . $title . '</a>';
+                $output .= '<li><a href="' . $breadcrumb['uri'] . '">' . $title . '</a>';
             }
 
             if ($count < $totalBreadcrumbs) {
@@ -72,7 +72,10 @@ class Breadcrumb
     
     public function addBreadcrumb($title, $uri = null)
     {
-        $this->breadcrumbs[$title] = $uri;
+        $this->breadcrumbs[] = array(
+            'title' => $title,
+            'uri' => $uri
+        );
 
         return $this;
     }
